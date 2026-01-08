@@ -1,6 +1,6 @@
 # Chat API com Semantic Kernel (.NET) + Ollama
 
-Esta é uma API de chat construída com **.NET 8**, utilizando o **Semantic Kernel** para integração com LLMs. Inicialmente desenvolvida com OpenAI, agora adaptada para usar **Ollama** localmente via Docker.  
+Esta é uma API de chat construída com **.NET 10**, utilizando o **Semantic Kernel** para integração com LLMs. Inicialmente desenvolvida com OpenAI, agora adaptada para usar **Ollama** localmente via Docker.  
 
 O projeto permite criar chats, enviar mensagens, recuperar histórico e gerar respostas com LLM, mantendo registro no banco de dados MySQL.
 
