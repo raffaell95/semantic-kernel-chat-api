@@ -1,0 +1,40 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 15s
+
+  db:
+    image: mysql:5.7
+    container_name: mysql
+    restart: always
+
+    depends_on:
+      ollama:
+        condition: service_healthy
+
+    environment:
+      MYSQL_DATABASE: chatMemoryDb
+      MYSQL_ROOT_PASSWORD: admin123
+      MYSQL_PASSWORD: admin123
+
+    ports:
+      - "3306:3306"
+
+    volumes:
+      - my-db:/var/lib/mysql
+
+volumes:
+  ollama_data:
+  my-db:
